@@ -1,0 +1,65 @@
+{
+  "name": "8_puzzle_electron",
+  "version": "0.1.0",
+  "main": "public/main.js",
+  "private": true,
+  "homepage": "./",
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "array-move": "^3.0.1",
+    "electron-squirrel-startup": "^1.0.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "4.0.3",
+    "web-vitals": "^1.0.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "electron": "wait-on tcp:3000 && electron-forge start",
+    "make": "npx @electron-forge/cli make --platform darwin",
+    "make-linux": "npx @electron-forge/cli make --platform linux",
+    "make-win": "npx @electron-forge/cli make --platform win32"
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "^6.0.0-beta.54",
+    "@electron-forge/maker-deb": "^6.0.0-beta.54",
+    "@electron-forge/maker-rpm": "^6.0.0-beta.54",
+    "@electron-forge/maker-squirrel": "^6.0.0-beta.54",
+    "@electron-forge/maker-zip": "^6.0.0-beta.54",
+    "electron": "^12.0.3",
+    "typescript": "^4.2.4"
+  },
+  "config": {
+    "forge": {
+      "packagerConfig": {
+        "icon": "./assets/favicon"    
+      },
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "<appname>",
+            "author": "Alexander Bakalov",
+            "description": "A simple visualizer for the A* and Best First Search algorithms solving the 8-puzzle!"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "darwin"
+          ]
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {
+            "icon": "./build/icon.png"
+          }
+        }
+      ]
+    }
+  }
+}
